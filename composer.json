@@ -10,5 +10,12 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+
+    "autoload": {
+      "classmap": [],
+      "psr-4": {
+        "Amis\\Catena\\": "src/Catena/"
+      }
+    }
 }
