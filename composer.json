@@ -1,0 +1,14 @@
+{
+    "name": "amis/catena",
+    "description": "This package provides a flexible way to create chains of code",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JP",
+            "email": "jp@amis.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
