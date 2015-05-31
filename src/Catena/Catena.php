@@ -1,16 +1,27 @@
 <?php
+namespace Amis\Catena;
+
 /**
- * This file is part of Entrust,
- * a role & permission management solution for Laravel.
+ * This class is the main entry point of catena. Usually this the interaction
+ * with this class will be done through the Catena Facade
  *
  * @license MIT
  * @package Amis\Catena
  */
 
-namespace Amis\Catena;
-
-
 class Catena {
+    /**
+     * Laravel application
+     *
+     * @var \Illuminate\Foundation\Application
+     */
+    public $app;
 
-    public function __construct() {}
+    /**
+     * Create a new instance
+     * @param \Illuminate\Foundation\Application $app
+     */
+    public function __construct($app) {
+        $this->app = $app;
+    }
 }
