@@ -11,16 +11,9 @@ use Amis\Catena\Contracts\CatenaLink;
  */
 
 class Catena {
-    /**
-     * Laravel application
-     *
-     * @var \Illuminate\Foundation\Application
-     */
+    /** @var \Illuminate\Foundation\Application */
     public $app;
-
-    /**
-     * @var Array
-     */
+    /** @var array  */
     private $_steps;
 
     /**
@@ -49,6 +42,10 @@ class Catena {
         ]);
     }
 
+    /**
+     * Run the steps necessary to finish the flow
+     * @return mixed|null
+     */
     public function run() {
         $step = null;
         $returnData = null;
@@ -58,7 +55,6 @@ class Catena {
 
             $returnData = call_user_func_array([$step['link'], $step['action']], $step['params']);
         }
-
         return $returnData;
     }
 

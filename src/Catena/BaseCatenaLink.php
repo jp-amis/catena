@@ -10,12 +10,13 @@ namespace Amis\Catena;
 
 use Amis\Catena\Contracts\CatenaLink;
 
+/**
+ * Class BaseCatenaLink
+ * @package Amis\Catena
+ */
 class BaseCatenaLink implements CatenaLink{
 
-    /**
-     * Name of the Catena Link
-     * @var String
-     */
+    /** @var String $name Name of the Catena Link */
     protected $name = "BaseCatenaLink";
 
     /**
