@@ -32,8 +32,9 @@ class Catena {
      * @param CatenaLink $link Instance that will be called
      * @param string $action Action name that will be called in the CatenaLink
      * @param array $params Array of params to pass to $action
+     * @param bool $end Check if this is the bottom of the steps and should return
      */
-    public function addStep($event, CatenaLink $link, $action, $params) {
+    public function addStep($event, CatenaLink $link, $action, $params, $end=false) {
         array_push($this->_steps, [
             'event' => $event,
             'link' => $link,
