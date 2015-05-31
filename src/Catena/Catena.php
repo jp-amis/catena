@@ -56,7 +56,7 @@ class Catena {
         for($i = 0; $i < $stepsLength; $i++){
             $step = $this->_steps[$i];
 
-            $returnData = call_user_func($step['link'][$step['action']], $step['params']);
+            $returnData = call_user_func_array([$step['link'], $step['action']], $step['params']);
         }
 
         return $returnData;
