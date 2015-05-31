@@ -177,12 +177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "83e0c1e8c51c75a6e4739941c9b4bb234a33c858"
+                "reference": "7fcf2156ea34daddd5ff727c5519be43737ad050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/83e0c1e8c51c75a6e4739941c9b4bb234a33c858",
-                "reference": "83e0c1e8c51c75a6e4739941c9b4bb234a33c858",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/7fcf2156ea34daddd5ff727c5519be43737ad050",
+                "reference": "7fcf2156ea34daddd5ff727c5519be43737ad050",
                 "shasum": ""
             },
             "require": {
@@ -222,7 +222,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-05-29 14:59:01"
+            "time": "2015-05-30 20:56:41"
         }
     ],
     "packages-dev": [],
