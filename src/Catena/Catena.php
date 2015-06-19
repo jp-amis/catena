@@ -57,7 +57,7 @@ class Catena {
             $sizeParams = sizeof($params);
             for($i = 0; $i < $sizeParams; $i++) {
                 $param = $params[$i];
-                if(is_a($param, 'CatenaValue')) {
+                if(is_a($param, 'Amis\Catena\CatenaValue')) {
                     $params[$i] = "Hello";
                 }
             }
