@@ -1,5 +1,5 @@
 <?php
-namespace Amis\Catena;
+namespace Amis\Catena\Facades;
 
 /**
  * This file is responsable for
@@ -12,15 +12,14 @@ namespace Amis\Catena;
 
 use Illuminate\Support\Facades\Facade;
 
-class CatenaFacade extends Facade{
+class Catena extends Facade {
 
     /**
      * Get the registered name of the component.
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
-    {
+    protected static function getFacadeAccessor() {
         return 'catena';
     }
 
