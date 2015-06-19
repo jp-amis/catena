@@ -53,10 +53,27 @@ class Catena {
         $stepsLength = sizeof($this->_steps);
         for($i = 0; $i < $stepsLength; $i++){
             $step = $this->_steps[$i];
-
-            $returnData = call_user_func_array([$step['link'], $step['action']], $step['params']);
+            $params = $step['params'];
+            $sizeParams = sizeof($params);
+            for($i = 0; $i < $sizeParams; $i++) {
+                $param = $params[$i];
+                if(is_a($param, 'CatenaValue')) {
+                    $params[$i] = "Hello";
+                }
+            }
+            $returnData = call_user_func_array([$step['link'], $step['action']], $params);
         }
         return $returnData;
     }
 
+
+    /**
+     * Register a CatenaValue so in Run method it can call it and get the current value
+     * @param $type Value type
+     * @param $name Value name
+     * @return CatenaValue
+     */
+    public function getValue($type, $name) {
+        return new CatenaValue($type, $name);
+    }
 }
