@@ -28,19 +28,23 @@ class Catena {
     /**
      * Add one basic step to the current Catena Chain
      *
+     * @param String $parent identifier for the flow
      * @param string $event the callback event name
      * @param CatenaLink $link Instance that will be called
      * @param string $action Action name that will be called in the CatenaLink
      * @param array $params Array of params to pass to $action
-     * @param bool $end Check if this is the bottom of the steps and should return
+     *
+     * @return int unique identifier
      */
-    public function addStep($event, CatenaLink $link, $action, $params, $end=false) {
+    public function addStep($parent, $event, CatenaLink $link, $action, $params) {
         array_push($this->_steps, [
+            'parent' => $parent,
             'event' => $event,
             'link' => $link,
             'action' => $action,
             'params' => $params
         ]);
+        return sizeof($this->_steps);
     }
 
     /**
@@ -50,18 +54,26 @@ class Catena {
     public function run() {
         $step = null;
         $returnData = null;
+        $lastStepIdentifier = null;
         $stepsLength = sizeof($this->_steps);
         for($i = 0; $i < $stepsLength; $i++){
             $step = $this->_steps[$i];
-            $params = $step['params'];
-            $sizeParams = sizeof($params);
-            for($i = 0; $i < $sizeParams; $i++) {
-                $param = $params[$i];
-                if(is_a($param, 'Amis\Catena\CatenaValue')) {
-                    $params[$i] = $param->parse();
+
+            // if it's the first run it or if it meets the parent and event
+            if($i == 0 || ($step['parent'] == $lastStepIdentifier && $step['event'] == $returnData->getAction())) {
+                $params = $step['params'];
+                $sizeParams = sizeof($params);
+                for ($i = 0; $i < $sizeParams; $i++) {
+                    $param = $params[$i];
+                    if (is_a($param, 'Amis\Catena\CatenaValue')) {
+                        $params[$i] = $param->parse();
+                    }
                 }
+                $lastStepIdentifier = $i;
+                $returnData = call_user_func_array([$step['link'], $step['action']], $params);
+
+                if(!is_a($returnData, 'Amis\Catena\CatenaResponse')) break;
             }
-            $returnData = call_user_func_array([$step['link'], $step['action']], $params);
         }
         return $returnData;
     }
@@ -75,5 +87,14 @@ class Catena {
      */
     public function getValue($type, $name) {
         return new CatenaValue($type, $name);
+    }
+
+    /**
+     * Create a Catena Response so Run method can call the next step correctly
+     * @param $action
+     * @return CatenaResponse
+     */
+    public function makeResponse($action) {
+        return new CatenaResponse($action);
     }
 }

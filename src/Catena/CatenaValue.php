@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jp
- * Date: 6/19/15
- * Time: 3:03 PM
- */
-
 namespace Amis\Catena;
 
 use Illuminate\Support\Facades\Request as Request;
@@ -14,6 +7,7 @@ use Illuminate\Support\Facades\Request as Request;
  * Class responsable from parsing the parameters for CatenaLink in the time
  * they are needed
  *
+ * @license MIT
  * @package Amis\Catena
  */
 class CatenaValue {
