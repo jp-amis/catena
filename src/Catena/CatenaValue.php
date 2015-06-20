@@ -7,13 +7,20 @@
  */
 
 namespace Amis\Catena;
+
+use Illuminate\Support\Facades\Request as Request;
+
 class CatenaValue {
 
     private $_type;
     private $_name;
 
-    function __construct($type, $name) {
+    public function __construct($type, $name) {
         $this->_type = $type;
         $this->_name = $name;
+    }
+
+    public function parse() {
+        return Request::all();
     }
 }

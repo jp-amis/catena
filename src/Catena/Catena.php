@@ -58,7 +58,7 @@ class Catena {
             for($i = 0; $i < $sizeParams; $i++) {
                 $param = $params[$i];
                 if(is_a($param, 'Amis\Catena\CatenaValue')) {
-                    $params[$i] = "Hello";
+                    $params[$i] = $param->parse();
                 }
             }
             $returnData = call_user_func_array([$step['link'], $step['action']], $params);
