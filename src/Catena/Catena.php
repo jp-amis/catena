@@ -63,10 +63,10 @@ class Catena {
             if($i == 0 || ($step['parent'] == $lastStepIdentifier && $step['event'] == $returnData->getAction())) {
                 $params = $step['params'];
                 $sizeParams = sizeof($params);
-                for ($i = 0; $i < $sizeParams; $i++) {
-                    $param = $params[$i];
+                for ($j = 0; $j < $sizeParams; $j++) {
+                    $param = $params[$j];
                     if (is_a($param, 'Amis\Catena\CatenaValue')) {
-                        $params[$i] = $param->parse();
+                        $params[$j] = $param->parse();
                     }
                 }
                 $lastStepIdentifier = $i;
