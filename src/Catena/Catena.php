@@ -44,7 +44,7 @@ class Catena {
             'action' => $action,
             'params' => $params
         ]);
-        return sizeof($this->_steps-1);
+        return sizeof($this->_steps)-1;
     }
 
     /**
